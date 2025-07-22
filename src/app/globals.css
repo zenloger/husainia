@@ -1,26 +1,106 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #e5e9ef;
+  --foreground: #222e3a;
+  --primary: #2186b5;
+  --primary-dark: #17648c;
+  --secondary: #f5f7fa;
+  --accent: #ff6600;
+  --menu-bg: #2186b5;
+  --menu-active: #17648c;
+  --card-bg: #fff;
+  --card-border: #b3c2d1;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header-top {
+  background: var(--primary-dark);
+  color: #fff;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+}
+
+.menu {
+  background: var(--menu-bg);
+  display: flex;
+  gap: 2rem;
+  padding: 0 2rem;
+  height: 56px;
+  align-items: center;
+}
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px 4px 0 0;
+  transition: background 0.2s;
+}
+.menu a.active, .menu a:hover {
+  background: var(--menu-active);
+}
+
+.visually-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 1.5rem;
+  transition: background 0.2s;
+}
+.visually-btn:hover {
+  background: #ff8800;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(34,46,58,0.07);
+  padding: 2rem;
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: flex-start;
+}
+.card-date {
+  background: var(--primary);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-weight: bold;
+  margin-right: 1.5rem;
+  min-width: 70px;
+}
+.card-content {
+  flex: 1;
+}
+.card-img {
+  width: 260px;
+  min-width: 180px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(34,46,58,0.10);
+}
+
+@media (max-width: 900px) {
+  .card { flex-direction: column; align-items: stretch; }
+  .card-img { width: 100%; min-width: 0; margin-top: 1rem; }
 }
