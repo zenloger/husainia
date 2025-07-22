@@ -53,6 +53,9 @@ body {
 }
 
 .visually-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   background: var(--accent);
   color: #fff;
   border: none;
