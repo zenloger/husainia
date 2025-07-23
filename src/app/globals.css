@@ -105,6 +105,9 @@ body {
 /* Для главного фона */
 .main-bg {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   background: var(--background);
 }
 
@@ -227,9 +230,8 @@ body {
   display: flex;
   gap: 10px;
   padding: 0 30px;
-  height: 48px;
+  height: 70px;
   align-items: center;
-  border-bottom: 1px solid #e0e0e0;
   justify-content: space-between;
 }
 .main-menu .nav-empty {
@@ -263,7 +265,7 @@ body {
 }
 .main-hero {
   position: relative;
-  min-height: 420px;
+  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -273,7 +275,7 @@ body {
 .main-hero-bg {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: url('/main-building.jpg') center center/cover no-repeat;
+  background: url('/images/hero.jpg') center center/cover no-repeat;
   filter: brightness(0.82);
   z-index: 1;
 }
