@@ -33,11 +33,18 @@ export default function Home() {
       </header>
       {/* Меню */}
       <nav className="main-menu">
-        <a href="#" className="active">Главная</a>
-        <a href="#">Новости</a>
-        <a href="#">Сведения об образовательной организации</a>
-        <a href="#">Контакты</a>
-        <a href="#" className="vk-link">VK</a>
+        <div className="nav-empty"></div>
+        <div className="nav-pages">
+          <a href="#">Главная</a>
+          <a href="#">Новости</a>
+          <a href="#">Сведения об образовательной организации</a>
+          <a href="#">Контакты</a>
+        </div>
+        <div className="nav-links">
+          <a href="#" className="vk-link">
+            <Image src="/icons/vk.svg" alt="ВК" width={40} height={40} />
+          </a>
+        </div>
       </nav>
       {/* Главный блок с фоновым фото и текстом */}
       <section className="main-hero">

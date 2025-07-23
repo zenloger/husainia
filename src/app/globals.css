@@ -224,29 +224,36 @@ body {
   margin-top: 0.3rem;
 }
 .main-menu {
-  background: #7cae98;
+  background: #72A68B;
   display: flex;
-  gap: 2rem;
-  padding: 0 2rem;
+  gap: 10px;
+  padding: 0 30px;
   height: 48px;
   align-items: center;
   border-bottom: 1px solid #e0e0e0;
+  justify-content: space-between;
+}
+.main-menu .nav-empty {
+  width: 32px;
+  height: 10px;
 }
 .main-menu a {
   color: #fff;
   text-decoration: none;
-  font-weight: 600;
+  font-family: Inter;
   font-size: 1.08rem;
   padding: 0.4rem 1.1rem;
-  border-radius: 4px 4px 0 0;
+  border-radius: 4px;
   transition: background 0.2s;
 }
 .main-menu a.active, .main-menu a:hover {
-  background: #5e8c74;
+  background: #0001;
+}
+
+.main-menu a.active, .main-menu a.vk-link:hover {
+  background: unset;
 }
 .main-menu .vk-link {
-  margin-left: auto;
-  background: #4a76a8;
   border-radius: 50%;
   width: 32px;
   height: 32px;
