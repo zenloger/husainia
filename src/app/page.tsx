@@ -1,103 +1,291 @@
+import {
+  AcademicCapIcon,
+  ArrowTopRightOnSquareIcon,
+  BookOpenIcon,
+  BuildingLibraryIcon,
+  CalendarDaysIcon,
+  CheckCircleIcon,
+  ChevronRightIcon,
+  DocumentTextIcon,
+  EyeIcon,
+  MapPinIcon,
+  PhoneIcon,
+  SparklesIcon,
+  UserGroupIcon,
+} from "@heroicons/react/24/outline";
+import { Noto_Sans_Arabic } from "next/font/google";
 import Image from "next/image";
 
-import './page.css';
+import "./page.css";
+
+const notoSansArabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "700"],
+});
+
+const letters = ["ح", "س", "ي", "ن", "ي", "ة", "ع", "ل", "م", "ق", "ر", "آ", "ن", "ف", "ك", "ر"];
+
+const navItems = [
+  { label: "Главная", href: "#top" },
+  { label: "Документы", href: "#documents" },
+  { label: "Абитуриентам", href: "#admission" },
+  { label: "Студентам", href: "#student-life" },
+  { label: "Контакты", href: "#contacts" },
+];
+
+const stats = [
+  { value: "1889", label: "историческое наследие" },
+  { value: "4", label: "формы обучения" },
+  { value: "3000+", label: "книг в библиотеке" },
+];
+
+const documentGroups = [
+  {
+    title: "Основные документы",
+    description: "Устав, лицензия, сведения об организации и управлении.",
+    href: "https://medrese-husainia.ru/?page_id=87",
+    items: ["Основные сведения", "Структура и органы управления", "Лицензия"],
+  },
+  {
+    title: "Локальные акты",
+    description: "Правила, инструкции, положения и внутренние регламенты.",
+    href: "https://medrese-husainia.ru/?page_id=156",
+    items: ["Инструкции", "Положения", "Правила распорядка"],
+  },
+  {
+    title: "Образование",
+    description: "Программы, учебные планы, дисциплины и графики обучения.",
+    href: "https://medrese-husainia.ru/?page_id=204",
+    items: ["Рабочие программы", "Учебные дисциплины", "Материальная база"],
+  },
+  {
+    title: "Поступление",
+    description: "Все, что нужно абитуриенту перед подачей заявления.",
+    href: "https://medrese-husainia.ru/?page_id=1539",
+    items: ["Перечень документов", "Контакты приемной комиссии", "Условия обучения"],
+  },
+];
+
+const admissionDocs = [
+  "Заявление на имя директора",
+  "Документ об образовании",
+  "Копия паспорта",
+  "Автобиография",
+  "Медицинская справка",
+  "Фотографии 3x4",
+];
+
+const programs = [
+  {
+    title: "Очное отделение",
+    text: "Погружение в исламские науки, арабский язык, Коран, фикх и хадисы.",
+  },
+  {
+    title: "Заочное обучение",
+    text: "Сессии несколько раз в год для тех, кто совмещает учебу с работой или служением.",
+  },
+  {
+    title: "Вечерние занятия",
+    text: "Удобный формат три раза в неделю для жителей города и области.",
+  },
+];
 
 export default function Home() {
   return (
-    <>
-      <div className="main-bg">
-        {/* Верхний блок с изображениями и заголовками */}
-        <header className="header">
-          <div className="top-header">
-            <div className="top-header-empty"></div>
-            <div className="top-header-text">
-              <div>Центральное духовное управление мусульман России</div>
-              <div>Региональное духовное управление мусульман Оренбургской области</div>
-            </div>
-            <div className="top-header-text-settings">
-              <span>Aa</span>
-            </div>
-          </div>
-          <div className="under-header">
-            <div className="header-img-left">
-              <Image src="/images/mechet.png" alt="Старое здание" width={180} height={120} />
-            </div>
-            <div className="header-center">
-              <div className="header-title">
-                Мусульманская религиозная организация<br/>
-                «духовная профессиональная образовательная организация»<br/>
-                <span className="header-title-main">«Медресе Хусаиния»</span>
-              </div>
-            </div>
-            <div className="header-img-right">
-              <Image src="/images/logo.png" alt="Герб" width={110} height={110} />
-            </div>
-          </div>
-        </header>
-        {/* Меню */}
-        <nav className="main-menu">
-          <div className="nav-empty"></div>
-          <div className="nav-pages">
-            <a href="#">Главная</a>
-            <a href="#">Новости</a>
-            <a href="#">Сведения об образовательной организации</a>
-            <a href="#">Контакты</a>
-          </div>
+    <main id="top" className="site-shell">
+      <header className="hero">
+        <nav className="topbar" aria-label="Основная навигация">
+          <a className="brand" href="#top" aria-label="Медресе Хусаиния">
+            <Image src="/images/logo.jpg" alt="" width={54} height={54} priority />
+            <span>
+              <strong>Хусаиния</strong>
+              <small>Медресе Оренбурга</small>
+            </span>
+          </a>
           <div className="nav-links">
-            <a href="https://vk.com/husainiya_medrese" className="vk-link">
-              <Image src="/icons/vk.svg" alt="ВК" width={40} height={40} />
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+          <a className="icon-link" href="https://vk.com/husainiya_medrese" target="_blank" rel="noreferrer" aria-label="ВКонтакте">
+            <Image src="/icons/vk.svg" alt="" width={28} height={28} />
+          </a>
+        </nav>
+
+        <div className="hero-grid">
+          <section className="hero-copy">
+            <p className="eyebrow">ЦДУМ России • Оренбургский муфтият</p>
+            <h1>Медресе «Хусаиния»</h1>
+            <p className="lead">
+              Духовное образование, арабский язык, Коран и студенческая среда, где традиция говорит современным языком.
+            </p>
+            <div className="hero-actions">
+              <a className="primary-action" href="#documents">
+                <DocumentTextIcon aria-hidden="true" />
+                Документы
+              </a>
+              <a className="secondary-action" href="#admission">
+                Абитуриентам
+                <ChevronRightIcon aria-hidden="true" />
+              </a>
+            </div>
+          </section>
+
+          <section className="hero-visual" aria-label="Фотография медресе">
+            <Image src="/images/hero.jpg" alt="Медресе Хусаиния" fill priority sizes="(max-width: 900px) 100vw, 46vw" />
+            <div className="hero-badge">
+              <BuildingLibraryIcon aria-hidden="true" />
+              <span>Оренбург, ул. Рыбаковская, 98</span>
+            </div>
+          </section>
+        </div>
+
+        <div className="hero-stats" aria-label="Краткая информация">
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </header>
+
+      <section className="quick-strip" aria-label="Быстрый доступ">
+        <a href="#documents">
+          <DocumentTextIcon aria-hidden="true" />
+          Документы и сведения
+        </a>
+        <a href="#admission">
+          <AcademicCapIcon aria-hidden="true" />
+          Поступление
+        </a>
+        <a href="#student-life">
+          <BookOpenIcon aria-hidden="true" />
+          Учеба и жизнь
+        </a>
+        <a href="#contacts">
+          <PhoneIcon aria-hidden="true" />
+          Связаться
+        </a>
+      </section>
+
+      <section id="documents" className="section documents-section">
+        <div className="section-heading">
+          <p className="eyebrow">Все важное в одном месте</p>
+          <h2>Документы без квеста по сайту</h2>
+          <p>
+            Раздел собран по смысловым группам: открываешь нужную карточку и сразу попадаешь к нужным сведениям или файлам.
+          </p>
+        </div>
+
+        <div className="document-grid">
+          {documentGroups.map((group) => (
+            <a className="document-card" key={group.title} href={group.href} target="_blank" rel="noreferrer">
+              <div className="document-card-top">
+                <DocumentTextIcon aria-hidden="true" />
+                <ArrowTopRightOnSquareIcon aria-hidden="true" />
+              </div>
+              <h3>{group.title}</h3>
+              <p>{group.description}</p>
+              <ul>
+                {group.items.map((item) => (
+                  <li key={item}>
+                    <CheckCircleIcon aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section id="admission" className="section admission-section">
+        <div className="admission-copy">
+          <p className="eyebrow">Для поступающих</p>
+          <h2>Понятный маршрут абитуриента</h2>
+          <p>
+            Сначала выбираете формат обучения, затем готовите документы и связываетесь с приемной комиссией. Самое нужное вынесено на первый экран раздела.
+          </p>
+          <div className="admission-actions">
+            <a className="primary-action" href="https://medrese-husainia.ru/?page_id=1539" target="_blank" rel="noreferrer">
+              Открыть правила приема
+            </a>
+            <a className="secondary-action" href="tel:+73532560949">
+              Позвонить
+              <PhoneIcon aria-hidden="true" />
             </a>
           </div>
-        </nav>
-      </div>
+        </div>
+        <div className="admission-panel">
+          <h3>Документы для подачи</h3>
+          <div className="doc-list">
+            {admissionDocs.map((doc, index) => (
+              <div key={doc}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                {doc}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* Блок с карточками */}
-      <div className="quick-access">
-        <div className="quick-background">
-          
+      <section id="student-life" className="section campus-section">
+        <div className={`${notoSansArabic.className} arabic-pattern`} aria-hidden="true">
+          {letters.map((letter, index) => (
+            <span key={`${letter}-${index}`}>{letter}</span>
+          ))}
         </div>
-        <div className="cards-wrapper">
-          <div className="card">
-            <div className="card-name">
-              <div className="card-logo">
-                <Image src="/icons/abit.svg" width={90} height={90} alt="Абитуриентам" />
-              </div>
-              <div className="card-title">
-                <span>Абитуриентам</span>
-              </div>
-            </div>
-            <div className="card-nav">
-              <div className="card-link">
-                <span>Приёмная комиссия</span>
-              </div>
-              <div className="card-link">
-                <span>Документы и положения</span>
-              </div>
-              <div className="card-link">
-                <span>Приказы о зачислении</span>
-              </div>
-            </div>
-          </div>
-          <div className="card">
-            <div className="card-name">
-              <div className="card-logo">
-                <Image src="/icons/stud.svg" width={90} height={90} alt="Студентам" />
-              </div>
-              <div className="card-title">
-                <span>Студентам</span>
-              </div>
-            </div>
-            <div className="card-nav">
-              <div className="card-link">
-                <span>Расписание</span>
-              </div>
-              <div className="card-link">
-                <span>Документы и правила</span>
-              </div>
-            </div>
+        <div className="campus-media">
+          <Image src="/images/mechet.jpg" alt="Центральная соборная мечеть" fill sizes="(max-width: 900px) 100vw, 42vw" />
+        </div>
+        <div className="campus-content">
+          <p className="eyebrow">Учеба и среда</p>
+          <h2>Традиция, которая живет сегодня</h2>
+          <div className="program-list">
+            {programs.map((program) => (
+              <article key={program.title}>
+                <SparklesIcon aria-hidden="true" />
+                <div>
+                  <h3>{program.title}</h3>
+                  <p>{program.text}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
-      </div>
-    </>
+      </section>
+
+      <section id="contacts" className="section contact-section">
+        <div>
+          <p className="eyebrow">Контакты</p>
+          <h2>Приезжайте, звоните или пишите</h2>
+        </div>
+        <div className="contact-grid">
+          <a href="tel:+73532560949">
+            <PhoneIcon aria-hidden="true" />
+            <span>+7 (3532) 56-09-49</span>
+          </a>
+          <a href="mailto:alfit35@mail.ru">
+            <UserGroupIcon aria-hidden="true" />
+            <span>alfit35@mail.ru</span>
+          </a>
+          <a href="https://yandex.ru/maps/?text=Оренбург%2C%20Рыбаковская%2098" target="_blank" rel="noreferrer">
+            <MapPinIcon aria-hidden="true" />
+            <span>Оренбург, Рыбаковская, 98</span>
+          </a>
+          <div>
+            <CalendarDaysIcon aria-hidden="true" />
+            <span>Пн-чт 08:30-20:30, пт-сб 08:30-13:45</span>
+          </div>
+        </div>
+      </section>
+
+      <a className="accessibility-link" href="#documents" aria-label="Перейти к разделу документов">
+        <EyeIcon aria-hidden="true" />
+      </a>
+    </main>
   );
 }
