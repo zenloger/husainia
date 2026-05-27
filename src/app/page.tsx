@@ -17,16 +17,17 @@ import Image from "next/image";
 import Link from "next/link";
 
 import "./page.css";
+import { siteSections } from "./sections";
 import { organizationSections } from "./sveden/data";
 
 const letters = ["ح", "س", "ي", "ن", "ي", "ة", "ع", "ل", "م", "ق", "ر", "آ", "ن", "ف", "ك", "ر"];
 
 const navItems = [
-  { label: "Главная", href: "#top" },
-  { label: "Сведения", href: "#organization-info" },
-  { label: "Абитуриентам", href: "#admission" },
-  { label: "Студентам", href: "#student-life" },
-  { label: "Контакты", href: "#contacts" },
+  { label: "Главная", href: "/" },
+  { label: "Сведения", href: "/sveden" },
+  { label: "Абитуриентам", href: "/abiturientam" },
+  { label: "Студентам", href: "/studentam" },
+  { label: "Контакты", href: "/kontakty" },
 ];
 
 const stats = [
@@ -100,9 +101,9 @@ export default function Home() {
           </a>
           <div className="nav-links">
             {navItems.map((item) => (
-              <a key={item.href} href={item.href}>
+              <Link key={item.href} href={item.href}>
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
           <a className="icon-link" href="https://vk.com/husainiya_medrese" target="_blank" rel="noreferrer" aria-label="ВКонтакте">
@@ -118,14 +119,14 @@ export default function Home() {
               Духовное образование, арабский язык, Коран и студенческая среда, где традиция говорит современным языком.
             </p>
             <div className="hero-actions">
-              <a className="primary-action" href="#documents">
+              <Link className="primary-action" href="/sveden">
                 <DocumentTextIcon aria-hidden="true" />
-                Документы
-              </a>
-              <a className="secondary-action" href="#admission">
+                Сведения
+              </Link>
+              <Link className="secondary-action" href="/abiturientam">
                 Абитуриентам
                 <ChevronRightIcon aria-hidden="true" />
-              </a>
+              </Link>
             </div>
           </section>
 
@@ -149,22 +150,52 @@ export default function Home() {
       </header>
 
       <section className="quick-strip" aria-label="Быстрый доступ">
-        <a href="#organization-info">
+        <Link href="/sveden">
           <DocumentTextIcon aria-hidden="true" />
           Сведения об организации
-        </a>
-        <a href="#admission">
+        </Link>
+        <Link href="/abiturientam">
           <AcademicCapIcon aria-hidden="true" />
           Поступление
-        </a>
-        <a href="#student-life">
+        </Link>
+        <Link href="/studentam">
           <BookOpenIcon aria-hidden="true" />
           Учеба и жизнь
-        </a>
-        <a href="#contacts">
+        </Link>
+        <Link href="/kontakty">
           <PhoneIcon aria-hidden="true" />
           Связаться
-        </a>
+        </Link>
+      </section>
+
+      <section id="site-sections" className="section site-sections">
+        <div className="section-heading">
+          <p className="eyebrow">Навигация</p>
+          <h2>Разделы сайта</h2>
+          <p>
+            Основные страницы вынесены отдельно, чтобы посетитель сразу понимал, куда идти: поступление, учеба, новости, контакты или официальный раздел.
+          </p>
+        </div>
+
+        <div className="site-section-grid">
+          <Link className="site-section-card official" href="/sveden">
+            <span>01</span>
+            <h3>Сведения об образовательной организации</h3>
+            <p>Официальные подразделы, документы, сведения об образовании, составе, доступной среде и отчетности.</p>
+          </Link>
+          {siteSections.map((section, index) => (
+            <Link className="site-section-card" key={section.slug} href={section.href}>
+              <span>{String(index + 2).padStart(2, "0")}</span>
+              <h3>{section.title}</h3>
+              <p>{section.summary}</p>
+              <ul>
+                {section.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section id="organization-info" className="section info-section">

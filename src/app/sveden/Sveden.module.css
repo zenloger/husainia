@@ -210,6 +210,14 @@
   background: #f7f5ef;
 }
 
+.detailsList li svg {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  color: #2c705f;
+  vertical-align: -3px;
+}
+
 .documentsList li {
   color: #17251f;
   font-weight: 800;
