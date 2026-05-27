@@ -13,15 +13,11 @@ import {
   SparklesIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/outline";
-import { Noto_Sans_Arabic } from "next/font/google";
 import Image from "next/image";
+import Link from "next/link";
 
 import "./page.css";
-
-const notoSansArabic = Noto_Sans_Arabic({
-  subsets: ["arabic"],
-  weight: ["400", "700"],
-});
+import { organizationSections } from "./sveden/data";
 
 const letters = ["ح", "س", "ي", "ن", "ي", "ة", "ع", "ل", "م", "ق", "ر", "آ", "ن", "ف", "ك", "ر"];
 
@@ -63,69 +59,6 @@ const documentGroups = [
     description: "Все, что нужно абитуриенту перед подачей заявления.",
     href: "https://medrese-husainia.ru/?page_id=1539",
     items: ["Перечень документов", "Контакты приемной комиссии", "Условия обучения"],
-  },
-];
-
-const organizationSections = [
-  {
-    title: "Основные сведения",
-    text: "Полное наименование, учредители, адрес, режим работы и контакты.",
-    href: "https://medrese-husainia.ru/?page_id=87",
-  },
-  {
-    title: "Структура и органы управления образовательной организацией",
-    text: "Сведения об управлении, подразделениях и ответственных лицах.",
-    href: "https://medrese-husainia.ru/?page_id=87",
-  },
-  {
-    title: "Документы",
-    text: "Устав, лицензия, локальные акты, предписания и отчетность.",
-    href: "#documents",
-  },
-  {
-    title: "Образование",
-    text: "Программы, учебные планы, календарные графики и формы обучения.",
-    href: "https://medrese-husainia.ru/?page_id=204",
-  },
-  {
-    title: "Педагогический состав",
-    text: "Руководство, преподаватели, квалификация и опыт наставников.",
-    href: "https://medrese-husainia.ru/?page_id=376",
-  },
-  {
-    title: "Материально-техническое обеспечение и оснащенность образовательного процесса",
-    text: "Кабинеты, библиотека, учебные пространства и условия обучения.",
-    href: "https://medrese-husainia.ru/?page_id=414",
-  },
-  {
-    title: "Доступная среда",
-    text: "Условия доступности здания, обучения и сопровождения студентов.",
-    href: "https://medrese-husainia.ru/?page_id=414",
-  },
-  {
-    title: "Платные образовательные услуги",
-    text: "Порядок оказания услуг, договоры, стоимость и основания оплаты.",
-    href: "https://medrese-husainia.ru/?page_id=156",
-  },
-  {
-    title: "Стипендии и меры поддержки обучающихся",
-    text: "Меры социальной поддержки, льготы и условия проживания.",
-    href: "https://medrese-husainia.ru/?page_id=156",
-  },
-  {
-    title: "Финансово-хозяйственная деятельность",
-    text: "План финансовой деятельности и отчеты о поступлении средств.",
-    href: "https://medrese-husainia.ru/?page_id=156",
-  },
-  {
-    title: "Международное сотрудничество",
-    text: "Сведения о договорах, партнерах и международных образовательных связях.",
-    href: "https://medrese-husainia.ru/?page_id=156",
-  },
-  {
-    title: "Организация питания в образовательной организации",
-    text: "Информация об условиях питания, графике и ответственных лицах.",
-    href: "https://medrese-husainia.ru/?page_id=156",
   },
 ];
 
@@ -245,13 +178,13 @@ export default function Home() {
 
         <div className="info-grid">
           {organizationSections.map((section) => (
-            <a className="info-card" key={section.title} href={section.href}>
+            <Link className="info-card" key={section.slug} href={`/sveden/${section.slug}`}>
               <span>
                 <DocumentTextIcon aria-hidden="true" />
               </span>
               <h3>{section.title}</h3>
-              <p>{section.text}</p>
-            </a>
+              <p>{section.summary}</p>
+            </Link>
           ))}
         </div>
       </section>
@@ -318,7 +251,7 @@ export default function Home() {
       </section>
 
       <section id="student-life" className="section campus-section">
-        <div className={`${notoSansArabic.className} arabic-pattern`} aria-hidden="true">
+        <div className="arabic-pattern" aria-hidden="true">
           {letters.map((letter, index) => (
             <span key={`${letter}-${index}`}>{letter}</span>
           ))}
