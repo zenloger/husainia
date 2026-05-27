@@ -301,6 +301,65 @@ html {
   gap: 14px;
 }
 
+.info-section {
+  padding-bottom: 50px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.info-card {
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid rgba(44, 112, 95, 0.16);
+  border-radius: 8px;
+  background: #fff;
+  color: #17251f;
+  text-decoration: none;
+  box-shadow: 0 14px 30px rgba(32, 40, 36, 0.07);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  border-color: #2c705f;
+  box-shadow: 0 18px 40px rgba(32, 40, 36, 0.12);
+}
+
+.info-card span {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  background: #eef5f1;
+  color: #2c705f;
+}
+
+.info-card svg {
+  width: 24px;
+  height: 24px;
+}
+
+.info-card h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.25;
+}
+
+.info-card p {
+  margin: 10px 0 0;
+  color: #65716b;
+  line-height: 1.52;
+}
+
 .document-card {
   min-height: 340px;
   display: flex;
@@ -584,6 +643,7 @@ html {
   }
 
   .document-grid,
+  .info-grid,
   .quick-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -624,6 +684,7 @@ html {
 
   .hero-stats,
   .quick-strip,
+  .info-grid,
   .document-grid,
   .contact-grid {
     grid-template-columns: 1fr;

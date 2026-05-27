@@ -27,7 +27,7 @@ const letters = ["ح", "س", "ي", "ن", "ي", "ة", "ع", "ل", "م", "ق", "ر
 
 const navItems = [
   { label: "Главная", href: "#top" },
-  { label: "Документы", href: "#documents" },
+  { label: "Сведения", href: "#organization-info" },
   { label: "Абитуриентам", href: "#admission" },
   { label: "Студентам", href: "#student-life" },
   { label: "Контакты", href: "#contacts" },
@@ -63,6 +63,69 @@ const documentGroups = [
     description: "Все, что нужно абитуриенту перед подачей заявления.",
     href: "https://medrese-husainia.ru/?page_id=1539",
     items: ["Перечень документов", "Контакты приемной комиссии", "Условия обучения"],
+  },
+];
+
+const organizationSections = [
+  {
+    title: "Основные сведения",
+    text: "Полное наименование, учредители, адрес, режим работы и контакты.",
+    href: "https://medrese-husainia.ru/?page_id=87",
+  },
+  {
+    title: "Структура и органы управления образовательной организацией",
+    text: "Сведения об управлении, подразделениях и ответственных лицах.",
+    href: "https://medrese-husainia.ru/?page_id=87",
+  },
+  {
+    title: "Документы",
+    text: "Устав, лицензия, локальные акты, предписания и отчетность.",
+    href: "#documents",
+  },
+  {
+    title: "Образование",
+    text: "Программы, учебные планы, календарные графики и формы обучения.",
+    href: "https://medrese-husainia.ru/?page_id=204",
+  },
+  {
+    title: "Педагогический состав",
+    text: "Руководство, преподаватели, квалификация и опыт наставников.",
+    href: "https://medrese-husainia.ru/?page_id=376",
+  },
+  {
+    title: "Материально-техническое обеспечение и оснащенность образовательного процесса",
+    text: "Кабинеты, библиотека, учебные пространства и условия обучения.",
+    href: "https://medrese-husainia.ru/?page_id=414",
+  },
+  {
+    title: "Доступная среда",
+    text: "Условия доступности здания, обучения и сопровождения студентов.",
+    href: "https://medrese-husainia.ru/?page_id=414",
+  },
+  {
+    title: "Платные образовательные услуги",
+    text: "Порядок оказания услуг, договоры, стоимость и основания оплаты.",
+    href: "https://medrese-husainia.ru/?page_id=156",
+  },
+  {
+    title: "Стипендии и меры поддержки обучающихся",
+    text: "Меры социальной поддержки, льготы и условия проживания.",
+    href: "https://medrese-husainia.ru/?page_id=156",
+  },
+  {
+    title: "Финансово-хозяйственная деятельность",
+    text: "План финансовой деятельности и отчеты о поступлении средств.",
+    href: "https://medrese-husainia.ru/?page_id=156",
+  },
+  {
+    title: "Международное сотрудничество",
+    text: "Сведения о договорах, партнерах и международных образовательных связях.",
+    href: "https://medrese-husainia.ru/?page_id=156",
+  },
+  {
+    title: "Организация питания в образовательной организации",
+    text: "Информация об условиях питания, графике и ответственных лицах.",
+    href: "https://medrese-husainia.ru/?page_id=156",
   },
 ];
 
@@ -153,9 +216,9 @@ export default function Home() {
       </header>
 
       <section className="quick-strip" aria-label="Быстрый доступ">
-        <a href="#documents">
+        <a href="#organization-info">
           <DocumentTextIcon aria-hidden="true" />
-          Документы и сведения
+          Сведения об организации
         </a>
         <a href="#admission">
           <AcademicCapIcon aria-hidden="true" />
@@ -169,6 +232,28 @@ export default function Home() {
           <PhoneIcon aria-hidden="true" />
           Связаться
         </a>
+      </section>
+
+      <section id="organization-info" className="section info-section">
+        <div className="section-heading">
+          <p className="eyebrow">Официальный раздел</p>
+          <h2>Сведения об образовательной организации</h2>
+          <p>
+            Подразделы вынесены отдельно и названы так, чтобы соответствовать требованиям к структуре официального сайта образовательной организации.
+          </p>
+        </div>
+
+        <div className="info-grid">
+          {organizationSections.map((section) => (
+            <a className="info-card" key={section.title} href={section.href}>
+              <span>
+                <DocumentTextIcon aria-hidden="true" />
+              </span>
+              <h3>{section.title}</h3>
+              <p>{section.text}</p>
+            </a>
+          ))}
+        </div>
       </section>
 
       <section id="documents" className="section documents-section">
