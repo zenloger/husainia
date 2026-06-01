@@ -2,7 +2,8 @@ FROM node:22-alpine AS deps
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+RUN npm ci \
+  && npm install --no-save --no-audit --no-fund lightningcss-linux-x64-musl@1.30.1
 
 FROM node:22-alpine AS builder
 WORKDIR /app
